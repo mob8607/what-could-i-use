@@ -77,24 +77,15 @@ ongr_elasticsearch:
         default:
             hosts:
                 - { host: 127.0.0.1:9200 }
-                - { host: 10.0.0.1:9200 }
-            index_name: acme
+#                - { host: 10.0.0.1:9200 }
+            index_name: default
             settings:
                 refresh_interval: -1
                 number_of_replicas: 1
-        customer:
-            hosts:
-                - { host: 127.0.0.1:9200 }
-            index_name: store
-            settings:
-                refresh_interval: -1
-                number_of_replicas: 2
+
     managers:
         default:
             connection: default
             mappings:
-                - AcmeDemoBundle
-        customer:
-            connection: customer
-            mappings:
-                - AcmeStoreBundle
+                - AppBundle
+            debug: true
