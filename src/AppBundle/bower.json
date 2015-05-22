@@ -1,0 +1,19 @@
+{
+  "name": "AppBundle",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mob8607/what-could-i-use",
+  "authors": [
+    "mob8607 <mathias.ober@massiveart.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.3"
+  }
+}
