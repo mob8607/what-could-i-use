@@ -4,6 +4,6 @@ var data = [
 ];
 
 React.render(
-    <FrameworkBox url="/data"/>,
+    <FrameworkBox url="/data" pollInterval={20000}/>,
     document.getElementById('content')
 );

@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Document\Framework;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -57,7 +58,8 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/data", name="wciu_framework_data")
+     * @Method({"GET"})
+     * @Route("/data", name="wciu_framework_get_data")
      */
     public function dataAction()
     {
@@ -65,6 +67,24 @@ class DefaultController extends Controller
             json_encode(array(
                 array('name' => 'sym2', 'text' => 'tex1'),
                 array('name' => 'yii2', 'text' => 'tex2')
+            ))
+        );
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @Method({"POST"})
+     * @Route("/data", name="wciu_framework_set_data")
+     */
+    public function setDataAction()
+    {
+        $response = new Response(
+            json_encode(array(
+                array('name' => 'sym2', 'text' => 'tex1'),
+                array('name' => 'yii2', 'text' => 'tex2'),
+                array('name' => 'yii3', 'text' => 'tex3')
             ))
         );
         $response->headers->set('Content-Type', 'application/json');
