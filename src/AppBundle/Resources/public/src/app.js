@@ -1,4 +1,9 @@
+var data = [
+    {name: "Symfony2", text: "This is one framework"},
+    {author: "Yii2", text: "This is *another* framework"}
+];
+
 React.render(
-<h1>Hello, world!</h1>,
-    document.getElementById('example')
+    <FrameworkBox url="/data"/>,
+    document.getElementById('content')
 );

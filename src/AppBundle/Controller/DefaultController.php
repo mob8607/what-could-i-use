@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Document\Framework;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -29,9 +30,12 @@ class DefaultController extends Controller
         $manager->persist($framework);
         $manager->commit();
 
-        return $this->render('AppBundle:Default:add.html.twig', array(
-            'framework' => $framework
-        ));
+        return $this->render(
+            'AppBundle:Default:add.html.twig',
+            array(
+                'framework' => $framework
+            )
+        );
     }
 
     /**
@@ -44,8 +48,27 @@ class DefaultController extends Controller
         $repository = $manager->getRepository('AppBundle:Framework');
         $framework = $repository->find('AU14AFlgCkvMJMIH2vVN'); // 1 is the document id
 
-        return $this->render('AppBundle:Default:index.html.twig', array(
-            'framework' => $framework
-        ));
+        return $this->render(
+            'AppBundle:Default:index.html.twig',
+            array(
+                'framework' => $framework
+            )
+        );
+    }
+
+    /**
+     * @Route("/data", name="wciu_framework_data")
+     */
+    public function dataAction()
+    {
+        $response = new Response(
+            json_encode(array(
+                array('name' => 'sym2', 'text' => 'tex1'),
+                array('name' => 'yii2', 'text' => 'tex2')
+            ))
+        );
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }
